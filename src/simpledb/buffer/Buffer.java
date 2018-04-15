@@ -2,8 +2,6 @@ package simpledb.buffer;
 
 import simpledb.server.SimpleDB;
 import simpledb.file.*;
-import java.util.Date;
-
 
 /**
  * An individual buffer.
@@ -22,82 +20,22 @@ public class Buffer {
    private int modifiedBy = -1;  // negative means not modified
    private int logSequenceNumber = -1; // negative means no corresponding log record
 
-   /** CS4432-Project1:
-    *  Added three new variables
-    *  bufferLocation is the location where buffer is. It is initalized at -1 representing nowhere in the buffer
-    *  lastAccess is the last time a buffer was accessed, using the java dates
-    *  referance is used for clock replacement
-    */
-   private int bufferLocation = -1 ; // -1 means not in bufferpool
-   private Date lastAccess;
-   private int referance = 0; // used for clock replacement
-
    /**
-    * Creates a new buffer, wrapping a new
-    * {@link simpledb.file.Page page}.
-    * This constructor is called exclusively by the
-    * class {@link BasicBufferMgr}.
-    * It depends on  the
-    * {@link simpledb.log.LogMgr LogMgr} object
+    * Creates a new buffer, wrapping a new 
+    * {@link simpledb.file.Page page}.  
+    * This constructor is called exclusively by the 
+    * class {@link BasicBufferMgr}.   
+    * It depends on  the 
+    * {@link simpledb.log.LogMgr LogMgr} object 
     * that it gets from the class
     * {@link simpledb.server.SimpleDB}.
     * That object is created during system initialization.
-    * Thus this constructor cannot be called until
+    * Thus this constructor cannot be called until 
     * {@link simpledb.server.SimpleDB#initFileAndLogMgr(String)} or
     * is called first.
     */
-   public Buffer() {
-      // CS4432-Project1:
-      // baseline date is it's creation
-      lastAccess = new Date() ;
-   }
-
-
-   //CS4432-Project1:
-   //Returns the location of the buffer
-   public Integer getbufferLocation(){
-      if (bufferLocation != -1){
-         return bufferLocation;
-      }
-
-      return null;
-
-   }
-
-   //CS4432-Project1:
-   //this lets you edit the buffer locations
-   public void changebufferLocation(int i){
-      bufferLocation = i ;
-   }
-
-   // CS4432-Project1:
-   // Function for updating the last access, important to do in LRU
-   public void updateAccess() {
-      lastAccess = new Date();
-   }
-
-   //CS4432-Project1:
-   //this returns the date accessed
-   // This is also only useful in LRU
-   public Date getLastAccess() {
-      return lastAccess;
-   }
-
-
-   //CS4432-Project1:
-   // Controls the referance bit. Used for clock policy
-   public void changeRef(int i) {
-      referance = i ;
-   }
-
-   // CS4432-Project1:
-   // get referance is used to get the referance.
-   // Is useful for clock policy
-   public int getReferance() {
-      return referance ;
-   }
-
-
+   public Buffer() {}
+   
    /**
     * Returns the integer value at the specified offset of the
     * buffer's page.
@@ -139,12 +77,8 @@ public class Buffer {
    public void setInt(int offset, int val, int txnum, int lsn) {
       modifiedBy = txnum;
       if (lsn >= 0)
-         logSequenceNumber = lsn;
+	      logSequenceNumber = lsn;
       contents.setInt(offset, val);
-
-      //CS4432-Project1:
-      //Whenever this is changed, a new date is needed. This is only important in the LRU portion
-      updateAccess() ;
    }
 
    /**
@@ -164,12 +98,8 @@ public class Buffer {
    public void setString(int offset, String val, int txnum, int lsn) {
       modifiedBy = txnum;
       if (lsn >= 0)
-         logSequenceNumber = lsn;
+	      logSequenceNumber = lsn;
       contents.setString(offset, val);
-
-      //CS4432-Project1:
-      // Again, whenever you do anything, you update when the buffer was last accessed
-      updateAccess() ;
    }
 
    /**
@@ -241,10 +171,6 @@ public class Buffer {
       blk = b;
       contents.read(blk);
       pins = 0;
-
-      // CS4432-Project1:
-      // Whenever you do anything, you need to update access
-      updateAccess() ;
    }
 
    /**
@@ -260,28 +186,5 @@ public class Buffer {
       fmtr.format(contents);
       blk = contents.append(filename);
       pins = 0;
-
-      //CS4432-Project1:
-      // Last but not least, you need to update last used when you do anything
-      // Used for LRu
-      updateAccess() ;
-   }
-
-
-   /**
-    * CS4432-Project1:
-    * Returns information about the buffer's id, block, and pin status
-    */
-   public String toString(){
-      Block block = blk ;
-
-      String info = "Buffer: " + bufferLocation + ", Pin: " + pins + ", Block: ";
-      if (block != null){
-         info = info + block.toString();
-      } if (block == null) {
-         info = info + "Not currently assigned block";
-      }
-
-      return info;
    }
 }
