@@ -1,9 +1,14 @@
 package simpledb.metadata;
 
-import static simpledb.metadata.TableMgr.MAX_NAME;
+import simpledb.record.RecordFile;
+import simpledb.record.Schema;
+import simpledb.record.TableInfo;
 import simpledb.tx.Transaction;
-import simpledb.record.*;
-import java.util.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static simpledb.metadata.TableMgr.MAX_NAME;
 
 /**
  * The index manager.
@@ -40,9 +45,10 @@ public class IndexMgr {
     * @param fldname the name of the indexed field
     * @param tx the calling transaction
     */
-   public void createIndex(String idxname, String tblname, String fldname, Transaction tx) {
+   public void createIndex(String indextype, String idxname, String tblname, String fldname, Transaction tx) {
       RecordFile rf = new RecordFile(ti, tx);
       rf.insert();
+      rf.setString("indextype", indextype);
       rf.setString("indexname", idxname);
       rf.setString("tablename", tblname);
       rf.setString("fieldname", fldname);
