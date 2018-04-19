@@ -1,13 +1,15 @@
 package simpledb.server;
 
+import simpledb.buffer.BufferMgr;
 import simpledb.file.FileMgr;
-import simpledb.buffer.*;
-import simpledb.tx.Transaction;
+import simpledb.index.planner.IndexUpdatePlanner;
 import simpledb.log.LogMgr;
 import simpledb.metadata.MetadataMgr;
-import simpledb.planner.*;
 import simpledb.opt.HeuristicQueryPlanner;
-import simpledb.index.planner.IndexUpdatePlanner;
+import simpledb.planner.Planner;
+import simpledb.planner.QueryPlanner;
+import simpledb.planner.UpdatePlanner;
+import simpledb.tx.Transaction;
 
 /**
  * The class that provides system-wide static global values.
@@ -100,8 +102,8 @@ public class SimpleDB {
     * To change how the planner works, modify this method.
     * @return the system's planner for SQL commands
     */public static Planner planner() {
-      QueryPlanner  qplanner = new BasicQueryPlanner();
-      UpdatePlanner uplanner = new BasicUpdatePlanner();
+      QueryPlanner  qplanner = new HeuristicQueryPlanner();
+      UpdatePlanner uplanner = new IndexUpdatePlanner();
       return new Planner(qplanner, uplanner);
    }
 }
