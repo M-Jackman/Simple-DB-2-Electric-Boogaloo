@@ -1,10 +1,11 @@
 package simpledb.planner;
 
-import java.util.Iterator;
-import simpledb.server.SimpleDB;
-import simpledb.tx.Transaction;
 import simpledb.parse.*;
 import simpledb.query.*;
+import simpledb.server.SimpleDB;
+import simpledb.tx.Transaction;
+
+import java.util.Iterator;
 
 /**
  * The basic planner for SQL update statements.
@@ -62,7 +63,7 @@ public class BasicUpdatePlanner implements UpdatePlanner {
       return 0;
    }
    public int executeCreateIndex(CreateIndexData data, Transaction tx) {
-      SimpleDB.mdMgr().createIndex(data.indexName(), data.tableName(), data.fieldName(), tx);
+      SimpleDB.mdMgr().createIndex(data.indexType(), data.indexName(), data.tableName(), data.fieldName(), tx);
       return 0;  
    }
 }
