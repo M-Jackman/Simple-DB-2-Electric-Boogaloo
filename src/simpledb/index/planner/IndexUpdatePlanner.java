@@ -1,16 +1,16 @@
 package simpledb.index.planner;
 
-import java.util.Iterator;
-import java.util.Map;
-
-import simpledb.record.RID;
-import simpledb.server.SimpleDB;
-import simpledb.tx.Transaction;
 import simpledb.index.Index;
 import simpledb.metadata.IndexInfo;
 import simpledb.parse.*;
-import simpledb.planner.*;
+import simpledb.planner.UpdatePlanner;
 import simpledb.query.*;
+import simpledb.record.RID;
+import simpledb.server.SimpleDB;
+import simpledb.tx.Transaction;
+
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * A modification of the basic update planner.
@@ -39,7 +39,7 @@ public class IndexUpdatePlanner implements UpdatePlanner {
          
          IndexInfo ii = indexes.get(fldname);
          if (ii != null) {
-            Index idx = ii.open();
+            Index idx = ii.open(null); //CHANGE THE VALUE FROM NULL TO STRING
             idx.insert(val, rid);
             idx.close();
          }
@@ -61,7 +61,7 @@ public class IndexUpdatePlanner implements UpdatePlanner {
          RID rid = s.getRid();
          for (String fldname : indexes.keySet()) {
             Constant val = s.getVal(fldname);
-            Index idx = indexes.get(fldname).open();
+            Index idx = indexes.get(fldname).open(null);//CHANGE THE VALUE FROM NULL TO STRING
             idx.delete(val, rid);
             idx.close();
          }
@@ -80,7 +80,7 @@ public class IndexUpdatePlanner implements UpdatePlanner {
       p = new SelectPlan(p, data.pred());
       
       IndexInfo ii = SimpleDB.mdMgr().getIndexInfo(tblname, tx).get(fldname);
-      Index idx = (ii == null) ? null : ii.open();
+      Index idx = (ii == null) ? null : ii.open(null); //CHANGE THE VALUE FROM NULL TO STRING
       
       UpdateScan s = (UpdateScan) p.open();
       int count = 0;
@@ -114,7 +114,7 @@ public class IndexUpdatePlanner implements UpdatePlanner {
    }
    
    public int executeCreateIndex(CreateIndexData data, Transaction tx) {
-      SimpleDB.mdMgr().createIndex(data.indexName(), data.tableName(), data.fieldName(), tx);
+      SimpleDB.mdMgr().createIndex(data.indexType(), data.indexName(), data.tableName(), data.fieldName(), tx);
       return 0;
    }
 }
