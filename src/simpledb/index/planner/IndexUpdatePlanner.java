@@ -39,7 +39,7 @@ public class IndexUpdatePlanner implements UpdatePlanner {
          
          IndexInfo ii = indexes.get(fldname);
          if (ii != null) {
-            Index idx = ii.open(null); //CHANGE THE VALUE FROM NULL TO STRING
+            Index idx = ii.open(); //
             idx.insert(val, rid);
             idx.close();
          }
@@ -61,7 +61,7 @@ public class IndexUpdatePlanner implements UpdatePlanner {
          RID rid = s.getRid();
          for (String fldname : indexes.keySet()) {
             Constant val = s.getVal(fldname);
-            Index idx = indexes.get(fldname).open(null);//CHANGE THE VALUE FROM NULL TO STRING
+            Index idx = indexes.get(fldname).open();
             idx.delete(val, rid);
             idx.close();
          }
@@ -80,7 +80,7 @@ public class IndexUpdatePlanner implements UpdatePlanner {
       p = new SelectPlan(p, data.pred());
       
       IndexInfo ii = SimpleDB.mdMgr().getIndexInfo(tblname, tx).get(fldname);
-      Index idx = (ii == null) ? null : ii.open(null); //CHANGE THE VALUE FROM NULL TO STRING
+      Index idx = (ii == null) ? null : ii.open(); //
       
       UpdateScan s = (UpdateScan) p.open();
       int count = 0;
