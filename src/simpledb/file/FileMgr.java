@@ -25,6 +25,8 @@ public class FileMgr {
    private File dbDirectory;
    private boolean isNew;
    private Map<String,FileChannel> openFiles = new HashMap<String,FileChannel>();
+   /*CS4432 Counts the number of IOs used*/
+   private long IOs;
 
    /**
     * Creates a file manager for the specified database.
@@ -47,7 +49,9 @@ public class FileMgr {
       // remove any leftover temporary tables
       for (String filename : dbDirectory.list())
          if (filename.startsWith("temp"))
-         new File(dbDirectory, filename).delete();
+            new File(dbDirectory, filename).delete();
+      /*intializes the IOs*/
+      IOs = 0;
    }
 
    /**
@@ -64,6 +68,8 @@ public class FileMgr {
       catch (IOException e) {
          throw new RuntimeException("cannot read block " + blk);
       }
+      /*CS4432 Increments the number of IOs used*/
+      IOs++;
    }
 
    /**
@@ -80,6 +86,8 @@ public class FileMgr {
       catch (IOException e) {
          throw new RuntimeException("cannot write block" + blk);
       }
+      /*CS4432 Increments the number of IOs used*/
+      IOs++;
    }
 
    /**
@@ -138,5 +146,21 @@ public class FileMgr {
          openFiles.put(filename, fc);
       }
       return fc;
+   }
+
+   /*CS4432 returns the IOs*/
+   public long IONumber(){
+      return IOs;
+   }
+
+   public void copy(String src, String dest){
+      try{
+         FileChannel srcCh = getFile(src);
+         FileChannel destCh = getFile(dest);
+         destCh.truncate(0);
+         destCh.transferFrom(srcCh, 0, srcCh.size());
+      } catch(IOException e){
+         e.printStackTrace();
+      }
    }
 }

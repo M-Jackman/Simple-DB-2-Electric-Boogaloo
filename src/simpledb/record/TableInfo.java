@@ -4,6 +4,9 @@ import static java.sql.Types.INTEGER;
 import static simpledb.file.Page.*;
 import java.util.*;
 
+import simpledb.server.SimpleDB;
+import simpledb.tx.Transaction;
+
 /**
  * The metadata about a table and its records.
  * @author Edward Sciore
@@ -13,12 +16,13 @@ public class TableInfo {
    private Map<String,Integer> offsets;
    private int recordlen;
    private String tblname;
-   
+   private Map<String, Integer> sorteds;
+
    /**
     * Creates a TableInfo object, given a table name
     * and schema. The constructor calculates the
     * physical offset of each field.
-    * This constructor is used when a table is created. 
+    * This constructor is used when a table is created.
     * @param tblname the name of the table
     * @param schema the schema of the table's records
     */
@@ -26,16 +30,18 @@ public class TableInfo {
       this.schema = schema;
       this.tblname = tblname;
       offsets  = new HashMap<String,Integer>();
+      sorteds  = new HashMap<String, Integer>();
       int pos = 0;
       for (String fldname : schema.fields()) {
          offsets.put(fldname, pos);
          pos += lengthInBytes(fldname);
+         sorteds.put(fldname, 0);
       }
       recordlen = pos;
    }
-   
+
    /**
-    * Creates a TableInfo object from the 
+    * Creates a TableInfo object from the
     * specified metadata.
     * This constructor is used when the metadata
     * is retrieved from the catalog.
@@ -44,13 +50,14 @@ public class TableInfo {
     * @param offsets the already-calculated offsets of the fields within a record
     * @param recordlen the already-calculated length of each record
     */
-   public TableInfo(String tblname, Schema schema, Map<String,Integer> offsets, int recordlen) {
+   public TableInfo(String tblname, Schema schema, Map<String,Integer> offsets, int recordlen, Map<String,Integer> sorteds) {
       this.tblname   = tblname;
       this.schema    = schema;
       this.offsets   = offsets;
       this.recordlen = recordlen;
+      this.sorteds   = sorteds;
    }
-   
+
    /**
     * Returns the filename assigned to this table.
     * Currently, the filename is the table name
@@ -60,7 +67,7 @@ public class TableInfo {
    public String fileName() {
       return tblname + ".tbl";
    }
-   
+
    /**
     * Returns the schema of the table's records
     * @return the table's record schema
@@ -68,7 +75,7 @@ public class TableInfo {
    public Schema schema() {
       return schema;
    }
-   
+
    /**
     * Returns the offset of a specified field within a record
     * @param fldname the name of the field
@@ -77,7 +84,7 @@ public class TableInfo {
    public int offset(String fldname) {
       return offsets.get(fldname);
    }
-   
+
    /**
     * Returns the length of a record, in bytes.
     * @return the length in bytes of a record
@@ -85,12 +92,38 @@ public class TableInfo {
    public int recordLength() {
       return recordlen;
    }
-   
+
    private int lengthInBytes(String fldname) {
       int fldtype = schema.type(fldname);
       if (fldtype == INTEGER)
          return INT_SIZE;
       else
          return STR_SIZE(schema.length(fldname));
+   }
+
+   public void sort(Map<String, Integer> sort, Transaction tx){
+      for(String s : sort.keySet()){
+         sorteds.put(s, sort.get(s));
+      }
+      SimpleDB.mdMgr().sort(sort, tblname,tx);
+   }
+
+   public void unsort(Transaction tx){
+      for(String s : sorteds.keySet()){
+         sorteds.put(s, 0);
+      }
+      SimpleDB.mdMgr().unsort(tblname,tx );
+   }
+
+   public boolean isSorted(List<String> sortfields){
+      int i = 0;
+      boolean result = true;
+      for(String field : sortfields){
+         i++;
+         if(!sorteds.get(field).equals(i)){
+            result = false;
+         }
+      }
+      return result;
    }
 }
