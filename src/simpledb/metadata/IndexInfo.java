@@ -1,13 +1,14 @@
 package simpledb.metadata;
 
-import static java.sql.Types.INTEGER;
-import static simpledb.file.Page.BLOCK_SIZE;
+import simpledb.index.Index;
+import simpledb.index.hash.HashIndex;
+import simpledb.record.Schema;
+import simpledb.record.TableInfo;
 import simpledb.server.SimpleDB;
 import simpledb.tx.Transaction;
-import simpledb.record.*;
-import simpledb.index.Index;
-import simpledb.index.hash.HashIndex; 
-import simpledb.index.btree.BTreeIndex; //in case we change to btree indexing
+
+import static java.sql.Types.INTEGER;
+import static simpledb.file.Page.BLOCK_SIZE;
 
 
 /**
@@ -19,6 +20,7 @@ import simpledb.index.btree.BTreeIndex; //in case we change to btree indexing
  * @author Edward Sciore
  */
 public class IndexInfo {
+   private String idxtype;
    private String idxname, fldname;
    private Transaction tx;
    private TableInfo ti;
@@ -26,13 +28,15 @@ public class IndexInfo {
    
    /**
     * Creates an IndexInfo object for the specified index.
+    * @param idxtype the type of index
     * @param idxname the name of the index
     * @param tblname the name of the table
     * @param fldname the name of the indexed field
     * @param tx the calling transaction
     */
-   public IndexInfo(String idxname, String tblname, String fldname,
+   public IndexInfo(String idxtype, String idxname, String tblname, String fldname,
                     Transaction tx) {
+      this.idxtype = idxtype;
       this.idxname = idxname;
       this.fldname = fldname;
       this.tx = tx;
@@ -112,5 +116,8 @@ public class IndexInfo {
          sch.addStringField("dataval", fldlen);
       }
       return sch;
+   }
+   private String getIndexType(){
+      return this.idxtype;
    }
 }
