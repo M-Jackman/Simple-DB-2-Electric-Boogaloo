@@ -122,6 +122,7 @@ public class HashIndex implements Index {
 	 * @return the cost of traversing the index
 	 */
 	public static int searchCost(int numblocks, int rpb){
+		System.out.print(numblocks/HashIndex.NUM_BUCKETS);
 		return numblocks / HashIndex.NUM_BUCKETS;
 	}
 }

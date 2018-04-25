@@ -9,15 +9,16 @@ import java.sql.*;
  * @author Edward Sciore
  */
 public class SimpleStatement extends StatementAdapter {
-   private RemoteStatement rstmt;
+   private RemoteStatement rmtstmt;
+   int counter = 0;
    
    public SimpleStatement(RemoteStatement s) {
-      rstmt = s;
+      rmtstmt = s;
    }
    
    public ResultSet executeQuery(String qry) throws SQLException {
       try {
-         RemoteResultSet rrs = rstmt.executeQuery(qry);
+         RemoteResultSet rrs = rmtstmt.executeQuery(qry);
          return new SimpleResultSet(rrs);
       }
       catch(Exception e) {
@@ -26,8 +27,10 @@ public class SimpleStatement extends StatementAdapter {
    }
    
    public int executeUpdate(String cmd) throws SQLException {
+      System.out.println("This is a test"+ counter);
       try {
-         return rstmt.executeUpdate(cmd);
+         counter++;
+         return rmtstmt.executeUpdate(cmd);
       }
       catch(Exception e) {
          throw new SQLException(e);

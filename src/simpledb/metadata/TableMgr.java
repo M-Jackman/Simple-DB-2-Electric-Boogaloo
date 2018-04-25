@@ -16,9 +16,9 @@ public class TableMgr {
    /**
     * The maximum number of characters in any
     * tablename or fieldname.
-    * Currently, this value is 16.
+    * Currently, this value is 20.
     */
-   public static final int MAX_NAME = 16;
+   public static final int MAX_NAME = 20;
    
    private TableInfo tcatInfo, fcatInfo;
    

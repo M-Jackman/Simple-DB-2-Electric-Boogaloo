@@ -1,6 +1,8 @@
 package simpledb.metadata;
 
 import simpledb.index.Index;
+import simpledb.index.btree.BTreeIndex;
+import simpledb.index.hash.ExtensibleHashIndex;
 import simpledb.index.hash.HashIndex;
 import simpledb.record.Schema;
 import simpledb.record.TableInfo;
@@ -50,8 +52,17 @@ public class IndexInfo {
     */
    public Index open() {
       Schema sch = schema();
-      // Create new HashIndex for hash indexing
-      return new HashIndex(idxname, sch, tx);
+
+      if(this.getIndexType().equals("bt")){
+         return new BTreeIndex(idxname, sch, tx);
+      }
+      else if(this.getIndexType().equals("sh")){
+         return new HashIndex(idxname, sch, tx);
+      }
+      else {
+         // Create new ExtensibleHashIndex for hash indexing
+         return new ExtensibleHashIndex(idxname, sch, tx);
+      }
    }
    
    /**

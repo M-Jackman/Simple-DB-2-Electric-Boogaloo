@@ -1,8 +1,11 @@
 package simpledb.record;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static java.sql.Types.INTEGER;
-import static simpledb.file.Page.*;
-import java.util.*;
+import static simpledb.file.Page.INT_SIZE;
+import static simpledb.file.Page.STR_SIZE;
 
 /**
  * The metadata about a table and its records.
@@ -75,6 +78,7 @@ public class TableInfo {
     * @return the offset of that field within a record
     */
    public int offset(String fldname) {
+      System.out.println(fldname);
       return offsets.get(fldname);
    }
    
