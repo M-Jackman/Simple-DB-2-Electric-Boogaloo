@@ -20,12 +20,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IndexMgr.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IndexMgr.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/simpledb/metadata/IndexMgr.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="540">
               <caret line="70" column="52" lean-forward="true" selection-start-line="70" selection-start-column="52" selection-end-line="70" selection-end-column="52" />
+              <folding>
+                <element signature="e#2239#2257#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SmartMergeJoinPlan.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/simpledb/materialize/SmartMergeJoinPlan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-798">
+              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExploitSortQueryPlanner.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/simpledb/opt/ExploitSortQueryPlanner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1554">
+              <caret line="77" column="45" lean-forward="true" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExploitSortTablePlanner.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/simpledb/opt/ExploitSortTablePlanner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2611">
+              <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,14 +159,17 @@
         <option value="$PROJECT_DIR$/src/simpledb/opt/HeuristicQueryPlanner.java" />
         <option value="$PROJECT_DIR$/src/simpledb/opt/TablePlanner.java" />
         <option value="$PROJECT_DIR$/src/simpledb/index/planner/IndexUpdatePlanner.java" />
-        <option value="$PROJECT_DIR$/src/simpledb/materialize/SmartMergeJoinPlan.java" />
-        <option value="$PROJECT_DIR$/src/simpledb/materialize/SmartSortPlan.java" />
-        <option value="$PROJECT_DIR$/src/simpledb/materialize/SmartSortScan.java" />
-        <option value="$PROJECT_DIR$/src/simpledb/materialize/SmartMergeJoinScan.java" />
         <option value="$PROJECT_DIR$/src/simpledb/record/TableInfo.java" />
         <option value="$PROJECT_DIR$/src/simpledb/metadata/MetadataMgr.java" />
         <option value="$PROJECT_DIR$/src/simpledb/metadata/TableMgr.java" />
         <option value="$PROJECT_DIR$/src/simpledb/file/FileMgr.java" />
+        <option value="$PROJECT_DIR$/src/simpledb/materialize/SmartMergeJoinPlan.java" />
+        <option value="$PROJECT_DIR$/src/simpledb/materialize/SmartMergeJoinScan.java" />
+        <option value="$PROJECT_DIR$/src/simpledb/materialize/SmartSortPlan.java" />
+        <option value="$PROJECT_DIR$/src/simpledb/materialize/SmartSortScan.java" />
+        <option value="$PROJECT_DIR$/src/simpledb/opt/ExploitQueryPlanner.java" />
+        <option value="$PROJECT_DIR$/src/simpledb/opt/ExploitSortQueryPlanner.java" />
+        <option value="$PROJECT_DIR$/src/simpledb/opt/ExploitSortTablePlanner.java" />
       </list>
     </option>
   </component>
@@ -196,14 +235,7 @@
               <item name="Simple-DB-2-Electric-Boogaloo" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="simpledb" type="462c0819:PsiDirectoryNode" />
-              <item name="materialize" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Simple-DB-2-Electric-Boogaloo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Simple-DB-2-Electric-Boogaloo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="simpledb" type="462c0819:PsiDirectoryNode" />
-              <item name="metadata" type="462c0819:PsiDirectoryNode" />
+              <item name="opt" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -238,7 +270,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.CreateStudentDB">
+  <component name="RunManager" selected="Application.Startup">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -521,8 +553,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.CreateStudentDB" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Startup" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Startup" />
+        <item index="1" class="java.lang.String" itemvalue="Application.CreateStudentDB" />
         <item index="2" class="java.lang.String" itemvalue="Application.CreateTestTables" />
         <item index="3" class="java.lang.String" itemvalue="Application.FindMascot" />
         <item index="4" class="java.lang.String" itemvalue="Application.FindMajors" />
@@ -551,13 +583,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33370167" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33370167" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2716702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27071825" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -644,20 +676,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/simpledb/buffer/Buffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2312">
-          <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simpledb/buffer/BufferMgr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/simpledb/server/Startup.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -909,6 +927,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1102">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -916,6 +935,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-745">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -935,33 +955,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/simpledb/materialize/SmartSortScan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simpledb/materialize/SmartMergeJoinPlan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="59" column="25" lean-forward="false" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/simpledb/materialize/SortScan.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simpledb/materialize/SmartMergeJoinScan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="49" lean-forward="true" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -988,14 +988,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/simpledb/materialize/SmartSortPlan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/simpledb/file/FileMgr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="469">
@@ -1007,7 +999,85 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="70" column="52" lean-forward="true" selection-start-line="70" selection-start-column="52" selection-end-line="70" selection-end-column="52" />
+          <folding>
+            <element signature="e#2239#2257#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simpledb/materialize/SmartMergeJoinScan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="129" column="7" lean-forward="true" selection-start-line="129" selection-start-column="7" selection-end-line="129" selection-end-column="7" />
+          <folding>
+            <element signature="e#3977#3978#0" expanded="false" />
+            <element signature="e#4044#4045#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simpledb/materialize/SmartSortPlan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="180" column="1" lean-forward="false" selection-start-line="180" selection-start-column="1" selection-end-line="180" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#560#577#0" expanded="false" />
+            <element signature="e#2773#2774#0" expanded="false" />
+            <element signature="e#2813#2814#0" expanded="false" />
+            <element signature="e#3075#3076#0" expanded="false" />
+            <element signature="e#3123#3124#0" expanded="false" />
+            <element signature="e#3310#3311#0" expanded="false" />
+            <element signature="e#3336#3337#0" expanded="false" />
+            <element signature="e#3466#3477#0" expanded="false" />
+            <element signature="e#4248#4259#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simpledb/materialize/SmartSortScan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2728#2729#0" expanded="false" />
+            <element signature="e#2778#2779#0" expanded="false" />
+            <element signature="e#2973#2974#0" expanded="false" />
+            <element signature="e#3023#3024#0" expanded="false" />
+            <element signature="e#3226#3227#0" expanded="false" />
+            <element signature="e#3279#3280#0" expanded="false" />
+            <element signature="e#3468#3469#0" expanded="false" />
+            <element signature="e#3520#3521#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simpledb/materialize/SmartMergeJoinPlan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-798">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simpledb/opt/ExploitSortTablePlanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2611">
+          <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simpledb/opt/ExploitSortQueryPlanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1554">
+          <caret line="77" column="45" lean-forward="true" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
