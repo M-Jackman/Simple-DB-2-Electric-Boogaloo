@@ -1,13 +1,11 @@
 package simpledb.server; /******************************************************************/
         import simpledb.remote.SimpleDriver;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Random;
+        import java.sql.*;
+        import java.util.Random;
 public class CreateTestTables {
-    final static int maxSize=1000;
+    final static int maxSize=100; //CS4432 this number was changed after feedback from students and the TAs
+    // who felt that 1000 instances should be enough to determine if everything is operating as it should
     /**
      * @param args
      */
@@ -45,7 +43,6 @@ public class CreateTestTables {
                     "( a1 int," +
                     "  a2 int"+
                     ")");
-            System.out.println("test inside datagenerator end of crazy bullshit");
 
             s.executeUpdate("create sh index idx1 on test1 (a1)");
             System.out.println("First index created");
@@ -71,6 +68,18 @@ public class CreateTestTables {
                     }
                 }
             }
+            ResultSet resultSet = s.executeQuery("select a1,a1 from test3 where a1 = 4");
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+            int columnsNumber = rsmd.getColumnCount();
+            while (resultSet.next()) {
+                for (int i = 1; i <= columnsNumber; i++) {
+                    if (i > 1) System.out.print(",  ");
+                    String columnValue = resultSet.getString(i);
+                    System.out.print(columnValue + " " + rsmd.getColumnName(i));
+                }
+                System.out.println("");
+            }
+
             conn.close();
 
         } catch (SQLException e) {
